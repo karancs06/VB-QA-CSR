@@ -1,0 +1,14 @@
+.test-page-container {
+  width: 100%;
+
+  .test-page-title,
+  .test-page-description {
+    width: 100%;
+    color: #6c5ce7;
+    text-align: center;
+  }
+
+  .test-page-title {
+    margin: 2rem 0 0 0;
+  }
+}

@@ -1,0 +1,53 @@
+.rte-toolbar-overlap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+
+  .rto__intro {
+    margin-bottom: 96px; // room above the stage so the toolbar has to overlap the heading, not the intro
+
+    code {
+      background: #f0f0f0;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  }
+
+  .rto__error {
+    color: #b00020;
+    font-weight: 600;
+  }
+
+  // The bug requires the heading to sit flush against the body text: the
+  // focused-field toolbar renders ~36px above the body field's top edge,
+  // which lands exactly on the heading. Keep every gap at zero.
+  .rto__stage {
+    border: 1px dashed #ccc;
+    padding: 0;
+  }
+
+  .rto__heading {
+    margin: 0;
+    padding: 0;
+
+    h1,
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 36px;
+    }
+  }
+
+  .rto__body {
+    margin: 0;
+    padding: 0;
+
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 24px;
+    }
+  }
+}

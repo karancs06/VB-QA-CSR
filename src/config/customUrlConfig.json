@@ -1,0 +1,30 @@
+{
+  "host_patterns": [
+    {
+      "pattern": "http://localhost:3006/{{locale}}/custom",
+      "alias": "Base"
+    },
+    {
+      "pattern": "https://localhost:3030/{{locale}}",
+      "alias": "Second"
+    }
+  ],
+  "path_patterns": [
+    {
+      "name": "test",
+      "pattern": "/{{entry.url_slug}}/{{entry.reference.nested_url_slug}}",
+      "content_types": ["custom_url_ct"],
+      "branches": ["main"],
+      "include_only": {
+        "custom_url_ct": {
+          "include": ["reference"],
+          "only": {
+            "reference": ["nested_url_slug"],
+            "BASE": ["url_slug", "reference", "url"]
+          }
+        }
+      }
+    }
+  ],
+  "enabled": true
+}

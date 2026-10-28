@@ -1,0 +1,231 @@
+.overlay-blocking {
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+
+  &__intro {
+    margin-bottom: 32px;
+    padding: 16px 20px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    border-left: 4px solid #6366f1;
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: #374151;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #374151;
+    }
+
+    code {
+      background: #e5e7eb;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+  }
+
+  &__data-status {
+    margin: 4px 0 12px;
+    padding: 6px 10px;
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+    color: #78350f;
+    font-size: 13px;
+  }
+
+  &__flag-status {
+    margin: 4px 0 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+
+    &--on {
+      background: #ecfdf5;
+      border-left: 3px solid #10b981;
+      color: #065f46;
+    }
+
+    &--off {
+      background: #fef2f2;
+      border-left: 3px solid #ef4444;
+      color: #991b1b;
+    }
+  }
+}
+
+.ob__scenario {
+  margin-bottom: 28px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 16px 20px;
+  background: #ffffff;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    gap: 12px;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: 16px;
+    color: #111827;
+  }
+
+  &-desc {
+    margin: 0 0 14px;
+    color: #6b7280;
+    font-size: 13px;
+  }
+
+  &-body {
+    position: relative;
+    border: 1px dashed #d1d5db;
+    border-radius: 4px;
+    padding: 12px;
+    background: #fafafa;
+    min-height: 80px;
+  }
+}
+
+.ob__toggle {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #6366f1;
+  background: #fff;
+  color: #4338ca;
+  cursor: pointer;
+
+  &:hover {
+    background: #eef2ff;
+  }
+}
+
+.ob__cslp {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  color: #065f46;
+  font-weight: 500;
+  user-select: none;
+}
+
+.ob__blocker {
+  position: relative;
+  background: rgba(239, 68, 68, 0.18);
+  border: 2px dashed #ef4444;
+  color: #991b1b;
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: auto;
+
+  &-label {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+}
+
+/* A — control (no overlay) */
+.ob__a {
+  display: block;
+}
+
+/* B — sibling spacer in flex row, overlapping via negative margin (SKF case) */
+.ob__b {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+}
+
+.ob__b-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+}
+
+.ob__b-spacer {
+  flex: 1;
+  min-height: 80px;
+  /* mirrors SKF .spacer-div: empty sibling cell pulled across the text column */
+  margin-left: -100%;
+  width: 100%;
+}
+
+/* C — absolute positioned overlay covering text */
+.ob__c {
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.ob__c-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* D — z-index stacked overlay */
+.ob__d {
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.ob__d-zindex {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+/* E — nested stacked overlays */
+.ob__e {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.ob__e-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.ob__e-layer-1 {
+  inset: 4px;
+  z-index: 1;
+}
+
+.ob__e-layer-2 {
+  inset: 12px;
+  z-index: 2;
+}
+
+.ob__e-layer-3 {
+  inset: 20px;
+  z-index: 3;
+}
