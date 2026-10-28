@@ -40,3 +40,10 @@ coverage
 # Misc
 .vercel
 
+# Local-only QA files: repro pages, harness config, SDK tarballs, per-env vite caches
+src/qa-local/
+vite.qa.config.mjs
+qa-envs/
+*.tgz
+.env.*
+!.env.example

@@ -15,6 +15,12 @@ import TestPage from "./pages/test-page";
 import CustomEntryPage from "./pages/custom-entry";
 import AnimationPage from "./pages/animation";
 
+// Local-only QA pages from src/qa-local (gitignored): present on QA machines, absent in deploys.
+const qaLocal = import.meta.glob<{
+  qaLocalRoutes: { path: string; element: React.ReactElement }[];
+}>("./qa-local/routes.tsx", { eager: true });
+const qaLocalRoutes = Object.values(qaLocal).flatMap((m) => m.qaLocalRoutes);
+
 function App() {
   const [getEntry, setEntry] = useState({} as EntryProps);
 
@@ -30,6 +36,9 @@ function App() {
   return (
     <div className="App" data-testid="app">
       <Routes location={routesLocation}>
+        {qaLocalRoutes.map((r) => (
+          <Route key={r.path} path={r.path} element={r.element} />
+        ))}
         <Route
           path="/locale/:locale"
           element={<Layout entry={getEntry} data-testid="layout" />}
