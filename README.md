@@ -44,12 +44,18 @@ route goes live everywhere with one push.
    - Output directory: `./build`
    - Environment variables: the seven variables above
 3. **Deploy**, then copy the site URL Launch gives you.
-4. **Back in the stack**, set the environment's URLs to the site: the site URL for the master
+4. **Turn off Contentstack Authentication** for the Launch environment (environment settings).
+   Launch may switch it on for new projects. While it is on, the site redirects to a Contentstack
+   login that refuses to load inside the Visual Builder and Live Preview iframe ("refused to
+   connect").
+5. **Back in the stack**, set the environment's URLs to the site: the site URL for the master
    locale, and `<site URL>/locale/<locale code>` for each other locale. Turn on Live Preview
    (Settings > Live Preview) with that environment if Visual Builder should open the site.
 
 To point an existing deployment at another stack, change its environment variables on Launch and
-redeploy.
+redeploy. One project can also serve several stacks, from any region or org: add a Launch
+environment per stack (branch `main`, the same build settings, that stack's variables). Each
+environment gets its own URL and redeploys on every push.
 
 ## Routes
 
